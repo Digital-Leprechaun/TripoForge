@@ -1,0 +1,26 @@
+# Copyright (C) 2026 - Joseph M Wilcox
+__pycache__/
+*.pyc
+.env
+*Key.txt
+*.local.json
+*.tmp
+model.download
+/work/
+/Work/
+/Output/
+/output/
+Converters/Mixamo2UE5/*.blend*
+Converters/Mixamo2UE5/*.fbx
+Converters/Mixamo2UE5/*.glb
+WebWork/
+**/.forge.lock
+**/.running
+ExampleProjectFiles/*/.forge.lock
+ExampleProjectFiles/*/Work/
+ExampleProjectFiles/*/Output/
+ExampleProjectFiles/*/output/
+ExampleProjectFiles/*/Source/*
+**/Intermediate/
+**/Binaries/
+**/Saved/

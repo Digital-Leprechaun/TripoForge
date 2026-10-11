@@ -1,0 +1,23 @@
+{
+  "_copyright": "Copyright (C) 2026 - Joseph M Wilcox",
+  "name": "MixamoExample",
+  "tripo": {
+    "model": "P2-20260801",
+    "face_limit": 20000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "delight": true
+  },
+  "rig": {
+    "mode": "force",
+    "type": "biped",
+    "spec": "mixamo"
+  },
+  "output_rig": {
+    "profile": "mixamo"
+  },
+  "blender": {
+    "height_m": 1.8
+  }
+}

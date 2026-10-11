@@ -1,0 +1,10 @@
+{
+  "_copyright": "Copyright (C) 2026 - Joseph M Wilcox",
+  "source_mesh": "/Game/Characters/Mannequins/Meshes/SKM_Manny_Simple.SKM_Manny_Simple",
+  "source_skeleton": "/Game/Characters/Mannequins/Meshes/SK_Mannequin.SK_Mannequin",
+  "bone_count": 89,
+  "contract_sha256": "d4163b9a232fe7c145797cf60b84ec467619b24a254aeece7637ddc50b28e2c5",
+  "fbx_sha256": "964911a57873b8f1499dae5ebda3d4f8a02a0bd7a81b4581dae6ace4edd1f5fd",
+  "basis": "Unreal left handed Z-up cm to Blender right handed Z-up meters: diag(1,-1,1)",
+  "root": "explicit bone from contract, including FBX armature-object implicit root"
+}

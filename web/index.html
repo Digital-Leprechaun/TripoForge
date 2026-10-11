@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="tripoforge-token" content="__TOKEN__">
+  <title>TripoForge · Model workshop</title>
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="/" aria-label="TripoForge home"><img class="brand-logo" src="/assets/asset-pack-games.png" alt="Asset Pack Games"><span>Tripo<span class="brand-light">Forge</span><small>MODEL WORKSHOP</small></span></a>
+    <div class="project-control"><label for="project">PROJECT JSON</label><div class="field-row"><input id="project" placeholder="Path to project.json" spellcheck="false"><button id="find" class="secondary">Find…</button><button id="load" class="secondary">Load</button></div><span id="project-info">Choose your generation recipe</span></div>
+    <div class="credits"><span>AVAILABLE CREDITS</span><strong id="balance">—</strong><small id="frozen">Not loaded</small><div><button id="refresh" class="text-button" title="Refresh balance">Refresh</button><a href="https://platform.tripo3d.ai" target="_blank" rel="noopener noreferrer">Buy credits ↗</a></div></div>
+  </header>
+  <div id="notice" role="status" aria-live="polite" hidden></div>
+  <main>
+    <section class="composer panel">
+      <div class="section-heading"><div><span class="eyebrow">01 / COMPOSE</span><h1>Build a model</h1></div><span class="tag">FOUR VIEWS</span></div>
+      <p class="muted intro">Drop an image into each view. Click a slot to browse.</p>
+      <div class="views">
+        <div class="slot front" data-view="front"><button class="drop" aria-label="Assign front image"><span class="slot-label">FRONT</span><span class="slot-icon">＋</span><span class="slot-hint">Drop image here</span><img hidden alt="Front view preview"></button><button class="clear" hidden aria-label="Clear front image">×</button><input type="file" accept="image/png,image/jpeg" hidden><span class="filename">No image assigned</span></div>
+        <div class="slot left" data-view="left"><button class="drop" aria-label="Assign left image"><span class="slot-label">LEFT</span><span class="slot-icon">＋</span><span class="slot-hint">Drop image here</span><img hidden alt="Left view preview"></button><button class="clear" hidden aria-label="Clear left image">×</button><input type="file" accept="image/png,image/jpeg" hidden><span class="filename">No image assigned</span></div>
+        <div class="slot right" data-view="right"><button class="drop" aria-label="Assign right image"><span class="slot-label">RIGHT</span><span class="slot-icon">＋</span><span class="slot-hint">Drop image here</span><img hidden alt="Right view preview"></button><button class="clear" hidden aria-label="Clear right image">×</button><input type="file" accept="image/png,image/jpeg" hidden><span class="filename">No image assigned</span></div>
+        <div class="slot back" data-view="back"><button class="drop" aria-label="Assign back image"><span class="slot-label">BACK</span><span class="slot-icon">＋</span><span class="slot-hint">Drop image here</span><img hidden alt="Back view preview"></button><button class="clear" hidden aria-label="Clear back image">×</button><input type="file" accept="image/png,image/jpeg" hidden><span class="filename">No image assigned</span></div>
+      </div>
+      <div class="mesh-controls"><div><label for="topology">TOPOLOGY</label><select id="topology"><option value="triangle">Tris</option><option value="quad" selected>Quads</option></select></div><div class="face-control"><label for="faces">FACE LIMIT <output id="face-label">20,000</output></label><input id="faces" type="range" min="48" max="25000" step="1" value="20000"><div class="range-labels"><span id="minimum">48</span><span id="maximum">25,000</span></div></div><input id="face-number" type="number" min="48" max="25000" value="20000" aria-label="Exact face limit"></div>
+      <div class="details"><label for="name">MODEL NAME</label><input id="name" value="Model_001" maxlength="64" spellcheck="false"><label for="output">OUTPUT FOLDER <span>optional</span></label><input id="output" placeholder="Defaults to the project folder\output" spellcheck="false"></div>
+      <div class="material-options options"><label><input id="pbr" type="checkbox" checked> PBR</label><label title="Remove lighting baked into reference images"><input id="delight" type="checkbox" checked> No Lighting</label><label class="unavailable" title="Studio feature; public API support unconfirmed"><input id="smartuv" type="checkbox" disabled> SmartUVs</label><label class="unavailable" title="Studio feature; public API support unconfirmed"><input id="upscale" type="checkbox" disabled> Upscale textures</label></div>
+      <p class="availability-note">SmartUVs and texture upscaling: API support unconfirmed. Standard UVs are included with textured models.</p>
+      <div class="options"><label><input id="rig" type="checkbox"> Add rig</label><label><input id="notexture" type="checkbox"> No texture / UVs</label><label><input id="subfolders" type="checkbox"> Subfolder</label><label><input id="messy" type="checkbox"> Keep intermediates</label></div>
+      <div id="rig-options" class="rig-controls" hidden><div><label for="rig-spec">RIG SPEC</label><select id="rig-spec"><option value="mixamo">Mixamo</option><option value="tripo">Tripo</option><option value="ue5">UE5 (converter)</option></select></div><div><label for="rig-type">RIG TYPE</label><select id="rig-type"><option value="biped">Biped</option><option value="quadruped">Quadruped</option><option value="hexapod">Hexapod</option><option value="octopod">Octopod</option><option value="avian">Avian</option><option value="serpentine">Serpentine</option><option value="aquatic">Aquatic</option></select></div></div>
+      <button id="add" class="primary wide" disabled>＋ Add task to queue</button><p class="footnote">Adding a task uses no credits. Images and settings are saved with each task.</p>
+    </section>
+    <section class="queue panel">
+      <div class="section-heading"><div><span class="eyebrow">02 / GENERATE</span><h2>Task queue <span id="count">0</span></h2></div><span id="queue-state" class="tag">READY</span></div>
+      <div class="queue-toolbar"><span id="queue-summary" class="muted">Your next models start here.</span><button id="run" class="primary" disabled>▶ Run all tasks</button></div>
+      <div id="tasks"><div class="empty"><span class="empty-icon">▧</span><h3>Your queue is empty</h3><p>Assign four views on the left, choose your mesh settings, and add your first task.</p><span class="empty-line">COMPOSE → QUEUE → GENERATE</span></div></div>
+      <div class="queue-note"><span class="live-dot"></span> Runs locally · Tasks run one at a time · Queue survives refreshes</div>
+    </section>
+  </main>
+  <footer><span>TripoForge / Local model generation · Copyright (C) 2026 - Joseph M Wilcox</span><span id="pricing-date">Cost estimates use published Tripo API rates.</span></footer>
+</body>
+</html>

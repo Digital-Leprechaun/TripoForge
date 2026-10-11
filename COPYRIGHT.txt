@@ -1,0 +1,11 @@
+Copyright (C) 2026 - Joseph M Wilcox.
+
+This notice applies to the original TripoForge source code, configuration,
+documentation and Asset Pack Games branding, including binary branding files.
+It does not grant permission to redistribute third-party assets or claim
+ownership of them. Third-party software and assets retain their respective
+owners' rights and license terms.
+
+Epic mannequin assets are local prerequisites, excluded from source control
+and release archives. Generated work and private local configuration are also
+excluded. TripoForge software is licensed under the MIT License in LICENSE.

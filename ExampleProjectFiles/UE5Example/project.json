@@ -1,0 +1,20 @@
+{
+  "_copyright": "Copyright (C) 2026 - Joseph M Wilcox",
+  "name": "UE5Example",
+  "tripo": {
+    "model": "P2-20260801",
+    "face_limit": 20000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "delight": true
+  },
+  "rig": {
+    "mode": "force",
+    "type": "biped",
+    "spec": "ue5"
+  },
+  "blender": {
+    "height_m": 1.8
+  }
+}

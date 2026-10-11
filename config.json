@@ -1,0 +1,18 @@
+{
+  "_copyright": "Copyright (C) 2026 - Joseph M Wilcox",
+  "key_env": "TRIPO_API_KEY",
+  "key_file": null,
+  "mixamo2ue5": {
+    "reference": "Converters/Mixamo2UE5/reference.blend",
+    "weights": "reference"
+  },
+  "blender": {
+    "executable": "blender"
+  },
+  "unreal": {
+    "executable": "UnrealEditor-Cmd"
+  },
+  "task_timeout": 3600,
+  "poll_interval": 5,
+  "process_timeout": 1800
+}
